@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cuser_id: 1
+  AccountNumber: MyString
+  name: MyString
+  clabe: MyString
+  bank: MyString
+
+two:
+  cuser_id: 1
+  AccountNumber: MyString
+  name: MyString
+  clabe: MyString
+  bank: MyString

@@ -31,12 +31,22 @@ class DataController < ApplicationController
   end
 
   def editPhone
-    @phones = Phone.where("id = ? AND user_id = ?",[1,2,3],$userIdenti.id)
-    if @phone.update_attributes!(phone_param)
-      render :json => {:status => "ok", :numbers => @phone.as_json(:only => [:number, :id])}
-    else
-      respond_with @phone, status: :unprocessable_entity
+    @telefonos = params[:phones]
+    @user = User.find(1)
+    @phones = Array.new
+    @telefonos.each do |tel|
+      @phone = @user.phones.find(tel[:id])
+      if @phone
+        @phones.push(@phone)
+      end
     end
+    puts @phones.to_h
+    render :json => {:status => "ok", :numbers => @phone.as_json(:only => [:number, :id])}
+    # if @phone.update_attributes!(phone_param)
+    #   render :json => {:status => "ok", :numbers => @phone.as_json(:only => [:number, :id])}
+    # else
+    #   respond_with @phone, status: :unprocessable_entity
+    # end
   end
 
   def showDatos

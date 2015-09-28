@@ -31,7 +31,7 @@ class DataController < ApplicationController
   end
 
   def editPhone
-    @phone = Phone.where("id = ? AND user_id = ?",params[:id],$userIdenti.id).first
+    @phones = Phone.where("id = ? AND user_id = ?",[1,2,3],$userIdenti.id)
     if @phone.update_attributes!(phone_param)
       render :json => {:status => "ok", :numbers => @phone.as_json(:only => [:number, :id])}
     else
@@ -43,7 +43,7 @@ class DataController < ApplicationController
     @user = User.find(1)
     render :json => {:status => "ok", :numbers => @user.phones.as_json(:only => [:number, :id]), :addresses => @user.addresses.as_json}
   end
-
+ 
 
   private
 
